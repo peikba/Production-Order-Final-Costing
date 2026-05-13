@@ -7,4 +7,4 @@ Import-Module 'C:\Program Files\Microsoft Dynamics 365 Business Central\280\Serv
 # Publish app to database
 Publish-NAVApp -ServerInstance $Servicetier -Path $Path -SkipVerification
 Sync-NAVApp -ServerInstance $Servicetier -Name $AppName -version $NewVersion #-Mode ForceSync
-ninstall-NAVApp  -ServerInstance $Servicetier -Name $AppName -Version $OldVersion 
+install-NAVApp  -ServerInstance $Servicetier -Name $AppName -Version $OldVersion 
