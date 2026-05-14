@@ -71,7 +71,7 @@ report 79100 "BAC Prod. Order Final Costing"
                 }
                 dataitem("Prod. Order Routing Line"; "Prod. Order Routing Line")
                 {
-                    DataItemLink = Status = field(Status), "Prod. Order No." = field("Prod. Order No."), "Routing Reference No." = field("Line No.");
+                    DataItemLink = Status = field(Status), "Prod. Order No." = field("Prod. Order No."), "Routing No." = field("Routing No."), "Routing Reference No." = field("Line No.");
                     DataItemTableView = sorting(Status, "Prod. Order No.", "Routing Reference No.", "Routing No.", "Operation No.");
                     column(OPNo_ProdOrderRtngLine; "Operation No.")
                     {
@@ -126,7 +126,7 @@ report 79100 "BAC Prod. Order Final Costing"
                                 locCLE.CalcFields("Direct Cost");
                                 RealizedTimeAmount += locCLE."Direct Cost";
                                 RealizedTimeQty += locCLE."Run Time" + locCLE."Setup Time";
-                            until Next() = 0;
+                            until locCLE.Next() = 0;
                         LineType := LineType::Capacity;
                     end;
                 }
@@ -190,7 +190,7 @@ report 79100 "BAC Prod. Order Final Costing"
                                 RealizedConsumptionQty -= Quantity;
                                 locILE.CalcFields("Cost Amount (Actual)", "Cost Amount (Non-Invtbl.)");
                                 RealizedConsumptionAmt -= (locILE."Cost Amount (Actual)" + locILE."Cost Amount (Non-Invtbl.)");
-                            until Next() = 0;
+                            until locILE.Next() = 0;
                         LineType := LineType::Consumption;
 
                         locPOLine.SetRange(Status, Status);
